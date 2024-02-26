@@ -13,6 +13,13 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { WebView } from 'react-native-webview';
 
 
+import { styled } from 'nativewind';
+
+const StyledView = styled(View)
+const StyledText = styled(Text)
+
+
+
 const styles = StyleSheet.create({
   chrome : {
     height: 60, // Reduced height for a more compact view
@@ -136,7 +143,8 @@ const ComponentSix = () => {
       <Text>Hello ComponentSix</Text>
       <Image
         source={require('./assets/6.webp')}
-        style={{width: 200, height: 200}}
+        style={{width: "100%", height: "100%"}}
+
       />
      </View>
   </>)
@@ -145,10 +153,10 @@ const ComponentSix = () => {
 const ComponentSeven = () => {
   return (<>
     <View style={styles.container}>
-      <Text>Hello ComponentSeven</Text>
+      <Text>Hello Shopping Mall</Text>
       <Image
         source={require('./assets/7.jpeg')}
-        style={{width: 200, height: 200}}
+        style={{width: "100%", height: "100%"}}
       />
      </View>
   </>)
@@ -157,11 +165,12 @@ const ComponentSeven = () => {
 const ComponentEight = () => {
   return (<>
     <View style={styles.container}>
-    <Text>Hello eight</Text>
+    <Text>Hello ATAK-WINTAK</Text>
 
       <Image
         source={require('./assets/8.webp')}
-        style={{width: 200, height: 200}}
+        style={{width: "95%", height: "90%"}}
+
       />
      </View>
   </>)
