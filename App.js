@@ -6,6 +6,7 @@ import Home from './screens/Home';
 import ColorPalette from './screens/ColorPalette';
 import AddNewPaletteModal from './screens/AddNewPaletteModal';
 
+
 import { NavigationContainer, useNavigation} from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
@@ -21,8 +22,8 @@ const styles = StyleSheet.create({
 });
 
 
-const MainStack = createStackNavigator();
-const RootStack = createStackNavigator();
+// const MainStack = createStackNavigator();
+// const RootStack = createStackNavigator();
 
 
 // 0. Speech + Action Tree for botparty 
@@ -37,33 +38,33 @@ const RootStack = createStackNavigator();
 // 9. Robotic Doctor Face + Voice 
 // 10. Karaoke Last
 
-const MainStackScreen = () => {
-  return (
-    <MainStack.Navigator>
-      <MainStack.Screen name="Home" component={Home} />
-      <MainStack.Screen
-        name="ColorPalette"
-        component={ColorPalette}
-        options={({ route }) => ({ title: route.params.paletteName })}
-      />
-    </MainStack.Navigator>
-  );
-};
+// const MainStackScreen = () => {
+//   return (
+//     <MainStack.Navigator>
+//       <MainStack.Screen name="Home" component={Home} />
+//       <MainStack.Screen
+//         name="ColorPalette"
+//         component={ColorPalette}
+//         options={({ route }) => ({ title: route.params.paletteName })}
+//       />
+//     </MainStack.Navigator>
+//   );
+// };
 
-const ColorsAreCool = () => {
-  return (
-    <NavigationContainer>
-      <RootStack.Navigator mode="modal">
-        <RootStack.Screen
-          name="Main"
-          component={MainStackScreen}
-          options={{ headerShown: false }}
-        />
-        <RootStack.Screen name="AddNewPalette" component={AddNewPaletteModal} />
-      </RootStack.Navigator>
-    </NavigationContainer>
-  );
-};
+// const ColorsAreCool = () => {
+//   return (
+//     <NavigationContainer>
+//       <RootStack.Navigator mode="modal">
+//         <RootStack.Screen
+//           name="Main"
+//           component={MainStackScreen}
+//           options={{ headerShown: false }}
+//         />
+//         <RootStack.Screen name="AddNewPalette" component={AddNewPaletteModal} />
+//       </RootStack.Navigator>
+//     </NavigationContainer>
+//   );
+// };
 
 // import ComponentOne from './screens/ComponentOne';
 // import ComponentTwo from './screens/ComponentTwo';
@@ -138,50 +139,97 @@ const ComponentEight = () => {
   </>)
 }
 
-const NavigationButtons = () => {
-  const navigation = useNavigation(); // Use the hook to get navigation object
+// const NavigationButtons = () => {
+//   const navigation = useNavigation(); // Use the hook to get navigation object
+
+//   return (
+//     <>
+//     <Button title="Go to Component One" onPress={() => navigation.navigate('ComponentOne')} />
+// <Button title="Go to Component Two" onPress={() => navigation.navigate('ComponentTwo')} />
+// <Button title="Go to Component Three" onPress={() => navigation.navigate('ComponentThree')} />
+// <Button title="Go to Component Four" onPress={() => navigation.navigate('ComponentFour')} />
+// <Button title="Go to Component Five" onPress={() => navigation.navigate('ComponentFive')} />
+// <Button title="Go to Component Six" onPress={() => navigation.navigate('ComponentSix')} />
+// <Button title="Go to Component Seven" onPress={() => navigation.navigate('ComponentSeven')} />
+// <Button title="Go to Component Eight" onPress={() => navigation.navigate('ComponentEight')} />
+// </>
+//   )
+// }
+
+
+// const App = () => {
+
+
+
+//   return (
+//     <View style={styles.container}>
+//       <Text>Hello Swarmbotics AI</Text>
+//       <NavigationContainer>
+// <RootStack.Navigator mode="modal">
+//   <RootStack.Screen name="Main" component={MainStackScreen} options={{ headerShown: false }} />
+//   <RootStack.Screen name="AddNewPalette" component={AddNewPaletteModal} />
+//   {/* Define navigation to your components here */}
+//   <RootStack.Screen name="ComponentOne" component={ComponentOne} />
+//   <RootStack.Screen name="ComponentTwo" component={ComponentTwo} />
+//   <RootStack.Screen name="ComponentThree" component={ComponentThree} />
+//   <RootStack.Screen name="ComponentFour" component={ComponentFour} />
+//   <RootStack.Screen name="ComponentFive" component={ComponentFive} />
+//   <RootStack.Screen name="ComponentSix" component={ComponentSix} />
+//   <RootStack.Screen name="ComponentSeven" component={ComponentSeven} />
+//   <RootStack.Screen name="ComponentEight" component={ComponentEight} />
+// </RootStack.Navigator>
+// </NavigationContainer>
+// <NavigationButtons />
+//      </View>
+//   )
+// }
+
+const Stack = createStackNavigator();
+
+
+function HomeScreen({ navigation }) {
+  let numViews = 8;
+  let numWords = 'one two three four five six seven eight'.split(' ')
+
+
+  let content = numWords.map((word, index) => {
+    return (<Button
+      title={`Go to Screen ${index + 1}`}
+      onPress={() => navigation.navigate(word)}
+      />)
+  })
 
   return (
-    <>
-    <Button title="Go to Component One" onPress={() => navigation.navigate('ComponentOne')} />
-<Button title="Go to Component Two" onPress={() => navigation.navigate('ComponentTwo')} />
-<Button title="Go to Component Three" onPress={() => navigation.navigate('ComponentThree')} />
-<Button title="Go to Component Four" onPress={() => navigation.navigate('ComponentFour')} />
-<Button title="Go to Component Five" onPress={() => navigation.navigate('ComponentFive')} />
-<Button title="Go to Component Six" onPress={() => navigation.navigate('ComponentSix')} />
-<Button title="Go to Component Seven" onPress={() => navigation.navigate('ComponentSeven')} />
-<Button title="Go to Component Eight" onPress={() => navigation.navigate('ComponentEight')} />
-</>
-  )
+    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+      {content}
+    </View>
+  );
 }
 
 
-const App = () => {
-
-
-
+const TableOfContents = () => {
   return (
-    <View style={styles.container}>
-      <Text>Hello Swarmbotics AI</Text>
-      <NavigationContainer>
-<RootStack.Navigator mode="modal">
-  <RootStack.Screen name="Main" component={MainStackScreen} options={{ headerShown: false }} />
-  <RootStack.Screen name="AddNewPalette" component={AddNewPaletteModal} />
-  {/* Define navigation to your components here */}
-  <RootStack.Screen name="ComponentOne" component={ComponentOne} />
-  <RootStack.Screen name="ComponentTwo" component={ComponentTwo} />
-  <RootStack.Screen name="ComponentThree" component={ComponentThree} />
-  <RootStack.Screen name="ComponentFour" component={ComponentFour} />
-  <RootStack.Screen name="ComponentFive" component={ComponentFive} />
-  <RootStack.Screen name="ComponentSix" component={ComponentSix} />
-  <RootStack.Screen name="ComponentSeven" component={ComponentSeven} />
-  <RootStack.Screen name="ComponentEight" component={ComponentEight} />
-</RootStack.Navigator>
-<NavigationButtons />
-</NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen name="one" component={HomeScreen} />
+        <Stack.Screen name="two" component={ComponentTwo} />
+        <Stack.Screen name="three" component={ComponentThree} />
+        <Stack.Screen name="four" component={ComponentFour} />
 
-     </View>
+        <Stack.Screen name="five" component={ComponentFive} />
+        <Stack.Screen name="six" component={ComponentSix} />
+        <Stack.Screen name="seven" component={ComponentSeven} />
+        <Stack.Screen name="eight" component={ComponentEight} />
+
+    </Stack.Navigator>
   )
+}
+
+const App = () => {
+  return (
+    <NavigationContainer>
+      <TableOfContents />
+    </NavigationContainer>
+  );
 }
 
 
