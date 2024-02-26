@@ -32,11 +32,14 @@ const styles = StyleSheet.create({
 // 3. Segmentation Map
 // 4. Call Of Duty Shopping -> AirDrop 
 // 5. Map w/ segmentation
-// 6. 
+// 6. observable is organizing worlds information - FMA:B -> edward seeing the truth (like kapil gupta)
 // 7. Zed Vision -> whatever cool AI shader stuff you can think of lol
 // 8. Look up Foxglove
 // 9. Robotic Doctor Face + Voice 
 // 10. Karaoke Last
+
+// 11. Make App that takes a youtube Link and then parses it and turns it into a picture book
+// only need like 50% accuracy
 
 // const MainStackScreen = () => {
 //   return (
